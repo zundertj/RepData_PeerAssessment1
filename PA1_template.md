@@ -16,10 +16,10 @@ We calculate the number of steps per day and show a histogram of the distributio
 
 ```r
 total_steps_per_day <- aggregate(steps ~ date, data_clean, sum)
-hist(total_steps_per_day$steps,seq(0, 25000, by=2500))
+hist(total_steps_per_day$steps,seq(0, 25000, by=500))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+![](PA1_template_files/figure-html/totalsteps-1.png) 
 
 The mean and median total steps per day are:
 
@@ -47,7 +47,7 @@ avg_per_interval <- aggregate(steps ~ interval, data_clean, mean)
 plot(avg_per_interval, type='l')
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![](PA1_template_files/figure-html/plot_avg_day-1.png) 
 
 The interval in which the most steps occur is:
 
@@ -85,10 +85,10 @@ Histogram of total steps per day:
 
 ```r
 total_steps_per_day_imputed <- aggregate(steps ~ date, data_imputed, sum)
-hist(total_steps_per_day_imputed$steps,seq(0, 25000, by=2500))
+hist(total_steps_per_day_imputed$steps,seq(0, 25000, by=500))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
+![](PA1_template_files/figure-html/histogram_imputed_data-1.png) 
 
 The mean and median of the imputed data
 
@@ -107,7 +107,7 @@ median(total_steps_per_day_imputed$steps)
 ```
 ## [1] 11015
 ```
-The differences with the non-imputed outcomes are negligible.
+The differences compared to the non-imputed outcomes vs are negligible.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 For each observation, we determine whether it is a weekday or weekend. Thereafter, we make a line-plot with two panels, one for weekdays and one for weekend.
@@ -128,6 +128,6 @@ g <- g + labs(x="Interval", y="Number of steps")
 g
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+![](PA1_template_files/figure-html/plot_day_of_week-1.png) 
 
 We see that there are some differences, especially around intervals 800-900. This is probably in the morning where the subject has to go to work. Hence the high and consistent amount of steps.
